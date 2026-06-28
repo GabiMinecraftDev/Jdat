@@ -6,13 +6,13 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 echo "Installing Jdat to /usr/bin and /usr/local/include..."
-BASE_URL="https://github.com/TON_USERNAME/TON_REPO/releases/latest/download"
+BASE_URL="https://github.com/GabiMinecraftDev/Jdat"
 
-curl -L -o /usr/local/lib/libjdat.so "$BASE_URL/libjdat.so"
-curl -L -o /usr/local/include/jdat.h "$BASE_URL/jdat.h"
+curl -L -o /usr/local/Jdat/libjdat.so "$BASE_URL/bin/libjdat.so"
+curl -L -o /usr/local/Jdat/jdat.h "$BASE_URL/include/jdat.h"
 
 ldconfig
 
 echo "Installation complete."
-echo "libjdat.so installed in /usr/local/lib"
-echo "jdat.h installed in /usr/local/include"
+echo "libjdat.so installed in /usr/local/Jdat"
+echo "jdat.h installed in /usr/local/Jdat"
