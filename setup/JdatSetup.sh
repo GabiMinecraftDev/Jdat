@@ -1,18 +1,18 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]; then 
-  echo "Please run as root (use sudo)"
-  exit
-fi
+DEST_DIR="/usr/local/lib/jdat"
 
-echo "Installing Jdat to /usr/bin and /usr/local/include..."
-BASE_URL="https://github.com/GabiMinecraftDev/Jdat"
+echo "Installing Jdat to $DEST_DIR..."
 
-curl -L -o /usr/local/Jdat/libjdat.so "$BASE_URL/bin/libjdat.so"
-curl -L -o /usr/local/Jdat/jdat.h "$BASE_URL/include/jdat.h"
+mkdir -p "$DEST_DIR"
 
-ldconfig
+BASE_URL="https://github.com/GabiMinecraftDev/blob/main"
+
+curl -L -o "$DEST_DIR/libjdat.so" "$BASE_URL/bin/libjdat.so" || { echo "Erreur lors du téléchargement de libjdat.so"; exit 1; }
+curl -L -o "$DEST_DIR/jdat.h" "$BASE_URL/include/jdat.h" || { echo "Erreur lors du téléchargement de jdat.h"; exit 1; }
 
 echo "Installation complete."
-echo "libjdat.so installed in /usr/local/Jdat"
-echo "jdat.h installed in /usr/local/Jdat"
+echo "Library location: $DEST_DIR/libjdat.so"
+echo "Header location: $DEST_DIR/jdat.h"
+
+pause
